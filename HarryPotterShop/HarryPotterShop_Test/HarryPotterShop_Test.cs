@@ -10,7 +10,7 @@ namespace HarryPotterShop_Test
     public class HarryPotterShop_Test
     {
         [TestMethod]
-        public void Test_CartCheckout_Only_Buy_1_booK_with_FirstEpisode()
+        public void Test_CartCheckout_Only_Buy_1_booK_with_FirstEpisode_Should_100()
         {
             //arrange
             var cart = new HarryPotterShopLib.HarryPotterShoppingCart();
@@ -22,6 +22,25 @@ namespace HarryPotterShop_Test
 
             //accert
             double expected = 100;
+
+            Assert.AreEqual(actual, expected);
+        }
+
+        [TestMethod]
+        public void Test_CartCheckout_Buy_1_FirstEpisode_1_SecondEpisode_Should_190()
+        {
+            //arrange
+            var cart = new HarryPotterShopLib.HarryPotterShoppingCart();
+
+            //act
+            var FirstEpisode = GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault();
+            var SecondEpisode = GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault();
+            cart.AddProductInCart(FirstEpisode);
+            cart.AddProductInCart(SecondEpisode);
+            var actual = cart.CheckOut();
+
+            //accert
+            double expected = 190;
 
             Assert.AreEqual(actual, expected);
         }
