@@ -10,15 +10,19 @@ namespace HarryPotterShopLib
     {
         public HarryPotterShoppingCart()
         {
+            _products = new List<HarryPotterProduct>();
         }
+
+        public List<HarryPotterProduct> _products { get; set; }
 
         public void AddProductInCart(HarryPotterProduct product)
         {
+            _products.Add(product);
         }
 
         public double CheckOut()
         {
-            throw new NotImplementedException();
+            return _products.Sum(x => x.SellPrice);
         }
     }
 }
