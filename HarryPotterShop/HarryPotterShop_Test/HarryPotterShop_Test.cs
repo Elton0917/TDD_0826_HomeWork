@@ -23,7 +23,7 @@ namespace HarryPotterShop_Test
             //accert
             double expected = 100;
 
-            Assert.AreEqual(actual, expected);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -42,7 +42,7 @@ namespace HarryPotterShop_Test
             //accert
             double expected = 190;
 
-            Assert.AreEqual(actual, expected);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -63,7 +63,7 @@ namespace HarryPotterShop_Test
             //accert
             double expected = 270;
 
-            Assert.AreEqual(actual, expected);
+            Assert.AreEqual(expected, actual);
         }
 
         private IEnumerable<HarryPotterProduct> GetAllProduct()

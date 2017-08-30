@@ -26,9 +26,13 @@ namespace HarryPotterShopLib
             var ProductsGroup = _products.GroupBy(i => i.ProductID)
             .Select(g => g.Key);
 
-            if (ProductsGroup.Count() >= 2)
+            if (ProductsGroup.Count() == 2)
             {
                 totalPrice *= 0.95;
+            }
+            else if (ProductsGroup.Count() >= 3)
+            {
+                totalPrice *= 0.9;
             }
 
             return totalPrice;
