@@ -76,7 +76,7 @@ namespace HarryPotterShop_Test
             var FirstEpisode = GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault();
             var SecondEpisode = GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault();
             var ThirdEpisode = GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault();
-            var FourthEpisode = GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault();
+            var FourthEpisode = GetAllProduct().Where(x => x.ProductID == "P04").FirstOrDefault();
             cart.AddProductInCart(FirstEpisode);
             cart.AddProductInCart(SecondEpisode);
             cart.AddProductInCart(ThirdEpisode);
