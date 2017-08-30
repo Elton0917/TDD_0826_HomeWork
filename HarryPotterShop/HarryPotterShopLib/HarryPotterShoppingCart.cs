@@ -22,7 +22,16 @@ namespace HarryPotterShopLib
 
         public double CheckOut()
         {
-            return _products.Sum(x => x.SellPrice);
+            var totalPrice = _products.Sum(x => x.SellPrice);
+            var ProductsGroup = _products.GroupBy(i => i.ProductID)
+            .Select(g => g.Key);
+
+            if (ProductsGroup.Count() >= 2)
+            {
+                totalPrice *= 0.95;
+            }
+
+            return totalPrice;
         }
     }
 }
