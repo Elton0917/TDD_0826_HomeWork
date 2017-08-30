@@ -34,7 +34,10 @@ namespace HarryPotterShopLib
             {
                 totalPrice *= 0.9;
             }
-
+            else if (ProductsGroup.Count() >= 4)
+            {
+                totalPrice *= 0.8;
+            }
             return totalPrice;
         }
     }
