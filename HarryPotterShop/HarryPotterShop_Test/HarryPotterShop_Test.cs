@@ -66,6 +66,29 @@ namespace HarryPotterShop_Test
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void Test_CartCheckout_Buy_1FirstEpisode_1SecondEpisode_1ThirdEpisode_1FourthEpisode_Should_320()
+        {
+            //arrange
+            var cart = new HarryPotterShopLib.HarryPotterShoppingCart();
+
+            //act
+            var FirstEpisode = GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault();
+            var SecondEpisode = GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault();
+            var ThirdEpisode = GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault();
+            var FourthEpisode = GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault();
+            cart.AddProductInCart(FirstEpisode);
+            cart.AddProductInCart(SecondEpisode);
+            cart.AddProductInCart(ThirdEpisode);
+            cart.AddProductInCart(FourthEpisode);
+            var actual = cart.CheckOut();
+
+            //accert
+            double expected = 320;
+
+            Assert.AreEqual(expected, actual);
+        }
+
         private IEnumerable<HarryPotterProduct> GetAllProduct()
         {
             var allProduct = new List<HarryPotterProduct>() {
