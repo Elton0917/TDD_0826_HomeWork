@@ -27,11 +27,10 @@ namespace HarryPotterShopLib
 
             foreach (var collection in CollectionPermutation())
             {
-                var MaxCountOfProducts = collection.Max(x => x.ProductCount);
                 double collectionTotalPrice = 0;
-                for (int i = 1; i <= MaxCountOfProducts; i++)
+                for (int i = 1; i <= collection.Max(x => x.ProductQuantity); i++)
                 {
-                    var levelProducts = collection.Where(x => x.ProductCount >= i);
+                    var levelProducts = collection.Where(x => x.ProductQuantity >= i);
                     collectionTotalPrice += HarryPotterEpisodeDiscount(levelProducts.Sum(x => x.ProductPrice), levelProducts.Count());
                 }
                 CollectionOfDiscountPrice.Add(collectionTotalPrice);
@@ -76,12 +75,31 @@ namespace HarryPotterShopLib
                 {
                     ProductID = productGroup.Key.ProductID,
                     ProductPrice = productGroup.Key.SellPrice,
-                    ProductCount = productGroup.Count()
+                    ProductQuantity = productGroup.Count()
                 };
 
             collectionProducts.Add(ProductsGroup);
 
+            //為了滿足測試
+            //for (int i = 0; i < ProductsGroup.Count(); i++)
+            //{
+
+            //    var permutation = new List<HarryPotterProductsGroup>();
+            //    foreach (var productitem in ProductsGroup)
+            //    {
+            //        productitem.ProductQuantity -= 1; 
+            //        if(productitem.ProductQuantity ==0)
+            //        {
+            //        }
+
+
+            //    }
+            //    collectionProducts.Add(permutation);
+            //}
+
+
             return collectionProducts;
         }
+
     }
 }
