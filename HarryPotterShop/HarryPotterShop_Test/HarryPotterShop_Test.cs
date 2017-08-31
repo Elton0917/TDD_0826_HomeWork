@@ -10,14 +10,13 @@ namespace HarryPotterShop_Test
     public class HarryPotterShop_Test
     {
         [TestMethod]
-        public void Test_CartCheckout_Only_Buy_1_booK_with_FirstEpisode_Should_100()
+        public void Test1_CartCheckout_Only_Buy_1_booK_with_FirstEpisode_Should_100()
         {
             //arrange
             var cart = new HarryPotterShopLib.HarryPotterShoppingCart();
 
             //act
-            var product = GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault();
-            cart.AddProductInCart(product);
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault());
             var actual = cart.CheckOut();
 
             //accert
@@ -27,16 +26,14 @@ namespace HarryPotterShop_Test
         }
 
         [TestMethod]
-        public void Test_CartCheckout_Buy_1_FirstEpisode_1_SecondEpisode_Should_190()
+        public void Test2_CartCheckout_Buy_1_FirstEpisode_1_SecondEpisode_Should_190()
         {
             //arrange
             var cart = new HarryPotterShopLib.HarryPotterShoppingCart();
 
             //act
-            var FirstEpisode = GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault();
-            var SecondEpisode = GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault();
-            cart.AddProductInCart(FirstEpisode);
-            cart.AddProductInCart(SecondEpisode);
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault());
             var actual = cart.CheckOut();
 
             //accert
@@ -46,18 +43,15 @@ namespace HarryPotterShop_Test
         }
 
         [TestMethod]
-        public void Test_CartCheckout_Buy_1FirstEpisode_1SecondEpisode_1ThirdEpisode_Should_270()
+        public void Test3_CartCheckout_Buy_1FirstEpisode_1SecondEpisode_1ThirdEpisode_Should_270()
         {
             //arrange
             var cart = new HarryPotterShopLib.HarryPotterShoppingCart();
 
             //act
-            var FirstEpisode = GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault();
-            var SecondEpisode = GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault();
-            var ThirdEpisode = GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault();
-            cart.AddProductInCart(FirstEpisode);
-            cart.AddProductInCart(SecondEpisode);
-            cart.AddProductInCart(ThirdEpisode);
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault());
             var actual = cart.CheckOut();
 
             //accert
@@ -67,20 +61,16 @@ namespace HarryPotterShop_Test
         }
 
         [TestMethod]
-        public void Test_CartCheckout_Buy_1FirstEpisode_1SecondEpisode_1ThirdEpisode_1FourthEpisode_Should_320()
+        public void Test4_CartCheckout_Buy_1FirstEpisode_1SecondEpisode_1ThirdEpisode_1FourthEpisode_Should_320()
         {
             //arrange
             var cart = new HarryPotterShopLib.HarryPotterShoppingCart();
 
             //act
-            var FirstEpisode = GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault();
-            var SecondEpisode = GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault();
-            var ThirdEpisode = GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault();
-            var FourthEpisode = GetAllProduct().Where(x => x.ProductID == "P04").FirstOrDefault();
-            cart.AddProductInCart(FirstEpisode);
-            cart.AddProductInCart(SecondEpisode);
-            cart.AddProductInCart(ThirdEpisode);
-            cart.AddProductInCart(FourthEpisode);
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P04").FirstOrDefault());
             var actual = cart.CheckOut();
 
             //accert
@@ -90,22 +80,17 @@ namespace HarryPotterShop_Test
         }
 
         [TestMethod]
-        public void Test_CartCheckout_Buy_AllEpisode_Should_375()
+        public void Test5_CartCheckout_Buy_AllEpisode_Should_375()
         {
             //arrange
             var cart = new HarryPotterShopLib.HarryPotterShoppingCart();
 
             //act
-            var FirstEpisode = GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault();
-            var SecondEpisode = GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault();
-            var ThirdEpisode = GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault();
-            var FourthEpisode = GetAllProduct().Where(x => x.ProductID == "P04").FirstOrDefault();
-            var FifthEpisode = GetAllProduct().Where(x => x.ProductID == "P05").FirstOrDefault();
-            cart.AddProductInCart(FirstEpisode);
-            cart.AddProductInCart(SecondEpisode);
-            cart.AddProductInCart(ThirdEpisode);
-            cart.AddProductInCart(FourthEpisode);
-            cart.AddProductInCart(FifthEpisode);
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P04").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P05").FirstOrDefault());
             var actual = cart.CheckOut();
 
             //accert
@@ -115,20 +100,16 @@ namespace HarryPotterShop_Test
         }
 
         [TestMethod]
-        public void Test_CartCheckout_Buy_1FirstEpisode_1SecondEpisode_2ThirdEpisode_Should_370()
+        public void Test6_CartCheckout_Buy_1FirstEpisode_1SecondEpisode_2ThirdEpisode_Should_370()
         {
             //arrange
             var cart = new HarryPotterShopLib.HarryPotterShoppingCart();
 
             //act
-            var FirstEpisode = GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault();
-            var SecondEpisode = GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault();
-            var ThirdEpisode_1 = GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault();
-            var ThirdEpisode_2 = GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault();
-            cart.AddProductInCart(FirstEpisode);
-            cart.AddProductInCart(SecondEpisode);
-            cart.AddProductInCart(ThirdEpisode_1);
-            cart.AddProductInCart(ThirdEpisode_2);
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault());
             var actual = cart.CheckOut();
 
             //accert
@@ -137,22 +118,18 @@ namespace HarryPotterShop_Test
             Assert.AreEqual(expected, actual);
         }
 
-        public void Test_CartCheckout_Buy_1FirstEpisode_2SecondEpisode_2ThirdEpisode_Should_460()
+        [TestMethod]
+        public void Test7_CartCheckout_Buy_1FirstEpisode_2SecondEpisode_2ThirdEpisode_Should_460()
         {
             //arrange
             var cart = new HarryPotterShopLib.HarryPotterShoppingCart();
 
             //act
-            var FirstEpisode = GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault();
-            var SecondEpisode_1 = GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault();
-            var SecondEpisode_2 = GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault();
-            var ThirdEpisode_1 = GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault();
-            var ThirdEpisode_2 = GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault();
-            cart.AddProductInCart(FirstEpisode);
-            cart.AddProductInCart(SecondEpisode_1);
-            cart.AddProductInCart(SecondEpisode_2);
-            cart.AddProductInCart(ThirdEpisode_1);
-            cart.AddProductInCart(ThirdEpisode_2);
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault());
             var actual = cart.CheckOut();
 
             //accert
@@ -161,7 +138,8 @@ namespace HarryPotterShop_Test
             Assert.AreEqual(expected, actual);
         }
 
-        public void Test_CartCheckout_Buy_2FirstEpisode_2SecondEpisode_2ThirdEpisode_1FourthEpisode_1FifthEpisode_Should_640()
+        [TestMethod]
+        public void Test8_CartCheckout_Buy_2FirstEpisode_2SecondEpisode_2ThirdEpisode_1FourthEpisode_1FifthEpisode_Should_640()
         {
             //arrange
             var cart = new HarryPotterShopLib.HarryPotterShoppingCart();
@@ -182,6 +160,30 @@ namespace HarryPotterShop_Test
 
             Assert.AreEqual(expected, actual);
         }
+
+        //[TestMethod]
+        //public void Test9_CartCheckout_Buy_2FirstEpisode_2SecondEpisode_2ThirdEpisode_2FourthEpisode_1FifthEpisode_Should_695()
+        //{
+        //    //arrange
+        //    var cart = new HarryPotterShopLib.HarryPotterShoppingCart();
+
+        //    //act
+        //    cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault());
+        //    cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault());
+        //    cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault());
+        //    cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault());
+        //    cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault());
+        //    cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault());
+        //    cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P04").FirstOrDefault());
+        //    cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P04").FirstOrDefault());
+        //    cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P05").FirstOrDefault());
+        //    var actual = cart.CheckOut();
+
+        //    //accert
+        //    double expected = 695;
+
+        //    Assert.AreEqual(expected, actual);
+        //}
 
         private IEnumerable<HarryPotterProduct> GetAllProduct()
         {

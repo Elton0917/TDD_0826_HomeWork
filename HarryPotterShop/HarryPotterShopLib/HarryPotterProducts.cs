@@ -18,5 +18,6 @@ namespace HarryPotterShopLib
         public string ProductID { get; set; }
         public double ProductPrice { get; set; }
         public int ProductCount { get; set; }
+        public int DiscountLevel { get; set; }
     }
 }

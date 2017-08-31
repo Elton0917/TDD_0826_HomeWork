@@ -22,28 +22,22 @@ namespace HarryPotterShopLib
 
         public double CheckOut()
         {
-            double totalPrice = 0;
-            var ProductsGroup =
-                from product in _products
-                group product by new
-                {
-                    product.ProductID,
-                    product.SellPrice
-                } into productGroup
-                select new HarryPotterProductsGroup
-                {
-                    ProductID = productGroup.Key.ProductID,
-                    ProductPrice = productGroup.Key.SellPrice,
-                    ProductCount = productGroup.Count()
-                };
+            //算出有幾總可能
+            List<double> CollectionOfDiscountPrice = new List<double>();
 
-            for (int i = 1; i <= ProductsGroup.Count(); i++)
+            foreach (var collection in CollectionPermutation())
             {
-                var levelProducts = ProductsGroup.Where(x => x.ProductCount >= i);
-                totalPrice += HarryPotterEpisodeDiscount(levelProducts.Sum(x => x.ProductPrice), levelProducts.Count());
+                var MaxCountOfProducts = collection.Max(x => x.ProductCount);
+                double collectionTotalPrice = 0;
+                for (int i = 1; i <= MaxCountOfProducts; i++)
+                {
+                    var levelProducts = collection.Where(x => x.ProductCount >= i);
+                    collectionTotalPrice += HarryPotterEpisodeDiscount(levelProducts.Sum(x => x.ProductPrice), levelProducts.Count());
+                }
+                CollectionOfDiscountPrice.Add(collectionTotalPrice);
             }
 
-            return totalPrice;
+            return CollectionOfDiscountPrice.Min();
         }
 
         private double HarryPotterEpisodeDiscount(double totalPrice, int productsCount)
@@ -64,7 +58,30 @@ namespace HarryPotterShopLib
             {
                 totalPrice *= 0.75;
             }
+
             return totalPrice;
+        }
+
+        private List<IEnumerable<HarryPotterProductsGroup>> CollectionPermutation()
+        {
+            var collectionProducts = new List<IEnumerable<HarryPotterProductsGroup>>() { };
+            var ProductsGroup =
+                from product in _products
+                group product by new
+                {
+                    product.ProductID,
+                    product.SellPrice
+                } into productGroup
+                select new HarryPotterProductsGroup
+                {
+                    ProductID = productGroup.Key.ProductID,
+                    ProductPrice = productGroup.Key.SellPrice,
+                    ProductCount = productGroup.Count()
+                };
+
+            collectionProducts.Add(ProductsGroup);
+
+            return collectionProducts;
         }
     }
 }
