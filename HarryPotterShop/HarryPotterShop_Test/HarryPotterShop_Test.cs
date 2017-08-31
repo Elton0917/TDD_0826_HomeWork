@@ -161,6 +161,28 @@ namespace HarryPotterShop_Test
             Assert.AreEqual(expected, actual);
         }
 
+        public void Test_CartCheckout_Buy_2FirstEpisode_2SecondEpisode_2ThirdEpisode_1FourthEpisode_1FifthEpisode_Should_640()
+        {
+            //arrange
+            var cart = new HarryPotterShopLib.HarryPotterShoppingCart();
+
+            //act
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P01").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P02").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P03").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P04").FirstOrDefault());
+            cart.AddProductInCart(GetAllProduct().Where(x => x.ProductID == "P05").FirstOrDefault());
+            var actual = cart.CheckOut();
+
+            //accert
+            double expected = 640;
+
+            Assert.AreEqual(expected, actual);
+        }
+
         private IEnumerable<HarryPotterProduct> GetAllProduct()
         {
             var allProduct = new List<HarryPotterProduct>() {
