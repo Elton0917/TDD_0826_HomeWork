@@ -12,4 +12,11 @@ namespace HarryPotterShopLib
         public string ProductName { get; set; }
         public double SellPrice { get; set; }
     }
+
+    public class HarryPotterProductsGroup
+    {
+        public string ProductID { get; set; }
+        public double ProductPrice { get; set; }
+        public int ProductCount { get; set; }
+    }
 }

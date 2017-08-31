@@ -22,23 +22,45 @@ namespace HarryPotterShopLib
 
         public double CheckOut()
         {
-            var totalPrice = _products.Sum(x => x.SellPrice);
-            var ProductsGroup = _products.GroupBy(i => i.ProductID)
-            .Select(g => g.Key);
+            double totalPrice = 0;
+            var ProductsGroup =
+                from product in _products
+                group product by new
+                {
+                    product.ProductID,
+                    product.SellPrice
+                } into productGroup
+                select new HarryPotterProductsGroup
+                {
+                    ProductID = productGroup.Key.ProductID,
+                    ProductPrice = productGroup.Key.SellPrice,
+                    ProductCount = productGroup.Count()
+                };
 
-            if (ProductsGroup.Count() == 2)
+            for (int i = 1; i <= ProductsGroup.Count(); i++)
+            {
+                var levelProducts = ProductsGroup.Where(x => x.ProductCount >= i);
+                totalPrice += HarryPotterEpisodeDiscount(levelProducts.Sum(x => x.ProductPrice), levelProducts.Count());
+            }
+
+            return totalPrice;
+        }
+
+        private double HarryPotterEpisodeDiscount(double totalPrice, int productsCount)
+        {
+            if (productsCount == 2)
             {
                 totalPrice *= 0.95;
             }
-            else if (ProductsGroup.Count() == 3)
+            else if (productsCount == 3)
             {
                 totalPrice *= 0.9;
             }
-            else if (ProductsGroup.Count() == 4)
+            else if (productsCount == 4)
             {
                 totalPrice *= 0.8;
             }
-            else if (ProductsGroup.Count() == 5)
+            else if (productsCount == 5)
             {
                 totalPrice *= 0.75;
             }
